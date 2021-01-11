@@ -82,14 +82,14 @@ function randomNum() {
         var middel = Math.round(Math.random() * (allImages.length - 1));
         var right = Math.round(Math.random() * (allImages.length - 1));
     }
-    while (right === left || middel === left || right === middel) {
+    while (right === left || middel === left || right === middel) 
         changePhoto(left, right, middel);
         allImages[middel].countshow++;
         allImages[right].countshow++;
         allImages[left].countshow++;
 
 
-    }
+    
 }
 
 
