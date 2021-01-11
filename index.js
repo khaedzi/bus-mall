@@ -11,7 +11,7 @@ var test = document.getElementById("all_goats");
 var allImages = [];
 var trialsleft = 25;
 var button = document.getElementById("button");
-var divone=document.getElementById("one");
+var divone = document.getElementById("one");
 
 test.addEventListener("click", countGoats)
 
@@ -47,6 +47,7 @@ function Images(name, image) {
     this.name = name;
     this.image = "images/" + image
     allImages.push(this);
+    this.countshow=0;
 }
 // Create all my images 
 new Images("bag", "bag.jpg");
@@ -83,6 +84,10 @@ function randomNum() {
     }
     while (right === left || middel === left || right === middel) {
         changePhoto(left, right, middel);
+        allImages[middel].countshow++;
+        allImages[right].countshow++;
+        allImages[left].countshow++;
+
 
     }
 }
@@ -116,30 +121,30 @@ function count(indecator) {
 
 randomNum();
 var firstTime = true;
-button.onclick =function(){
+button.onclick = function () {
 
-    if(firstTime){
-    var secondButton=document.createElement("button");
-    secondButton.textContent="reset";
-    divone.appendChild(secondButton);
-    secondButton.onclick=function(){
-        window.location.reload();
+    if (firstTime) {
+        var secondButton = document.createElement("button");
+        secondButton.textContent = "reset";
+        divone.appendChild(secondButton);
+        secondButton.onclick = function () {
+            window.location.reload();
 
-    }
-    var ourul=document.createElement("ul");
-    ourul.setAttribute("id","url1")
-    divone.appendChild(ourul);
+        }
+        var ourul = document.createElement("ul");
+        ourul.setAttribute("id", "url1")
+        divone.appendChild(ourul);
 
-    //create button for reset 
-     
-       for(var i=0; i<=allImages.length;i++){
-           var ourli=document.createElement("li");
+        //create button for reset 
 
-           ourli.textContent= ` the result for  ${allImages[i].name} is ${allImages[i].count}` ;
+        for (var i = 0; i <= allImages.length; i++) {
+            var ourli = document.createElement("li");
 
-ourul.appendChild(ourli);
-firstTime=false;
-}
+            ourli.textContent = ` the result for  ${allImages[i].name} is ${allImages[i].count} and we show it ${allImages[i].countshow} times`;
+
+            ourul.appendChild(ourli);
+            firstTime = false;
+        }
     }
 
 
