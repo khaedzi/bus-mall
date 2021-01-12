@@ -42,7 +42,7 @@ function countGoats(event) {
         test.removeEventListener("click", countGoats)
 
         local();
-
+chart();
 
         console.log(localStorage);
     }
@@ -180,7 +180,7 @@ button.onclick = function () {
 
         //create button for reset 
 
-        for (var i = 0; i <= allImages.length; i++) {
+        for (var i = 0; i < allImages.length; i++) {
             var ourli = document.createElement("li");
 
             ourli.textContent = ` the result for  ${allImages[i].name} is ${allImages[i].count} and we show it ${allImages[i].countshow} times`;
