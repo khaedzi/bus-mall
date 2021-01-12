@@ -40,7 +40,11 @@ function countGoats(event) {
     else {
 
         test.removeEventListener("click", countGoats)
-        chart();
+
+        local();
+
+
+        console.log(localStorage);
     }
 }
 
@@ -50,7 +54,11 @@ function Images(name, image) {
     this.image = "images/" + image
     allImages.push(this);
     this.countshow = 0;
+
+
 }
+
+
 // Create all my images 
 new Images("bag", "bag.jpg");
 new Images("bananna", "banana.jpg");
@@ -72,6 +80,10 @@ new Images("unicorn", "unicorn.jpg");
 new Images("usb", "usb.gif");
 new Images("water-can", "water-can.jpg");
 new Images("wine-glass", "wine-glass.jpg");
+
+
+
+
 
 // i will do function to create ranom num
 function checkShow(imageName) {
@@ -176,85 +188,82 @@ button.onclick = function () {
             ourul.appendChild(ourli);
             firstTime = false;
         }
+
+
+    }
+
+    
+}
+
+function local() {
+
+    localStorage.setItem("image-showing", JSON.stringify(allImages));
+
+}
+
+
+function checkAndRestore() {
+
+    if (localStorage.length > 0) {
+        allImages = JSON.parse(localStorage.getItem('image-showing'));
+
+    }
+}
+
+
+function chart() {
+    var arrayImageName = [];
+    var arrayImageCount = [];
+    var arrayImageCountShow = [];
+
+
+
+
+    for (var i = 0; i < allImages.length; i++) {
+        arrayImageName.push(allImages[i].name);
+        arrayImageCountShow.push(allImages[i].countshow);
+        arrayImageCount.push(allImages[i].count);
+
     }
 
 
-}
-
-
-function chart(){
-var arrayImageName=[];
-var arrayImageCount=[];
-var arrayImageCountShow=[];
-
-
-for(var i=0;i<allImages.length;i++){
-    arrayImageName.push(allImages[i].name);
-    arrayImageCountShow.push(allImages[i].countshow);
- arrayImageCount.push(allImages[i].count);
-
-}
-console.log(arrayImageName);
-
-var myChart = new Chart(goatCanvas, {
-    type: 'bar',
-    data: {
-        labels: arrayImageName, // array of labels (names of the goats)
-        datasets: [
-            {
-                label: '# of Goat Clicks',
-                data: arrayImageCount, // array of values (count for each goat when it was clicked)
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            },
-            {
-                label: 'Time shown for the Goat',
-                data: arrayImageCountShow, // array of values (count for each goat when it was clicked)
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
+    var myChart = new Chart(goatCanvas, {
+        type: 'bar',
+        data: {
+            labels: arrayImageName, // array of labels (names of the goats)
+            datasets: [
+                {
+                    label: '# of Goat Clicks',
+                    data: arrayImageCount, // array of values (count for each goat when it was clicked)
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Time shown for the Goat',
+                    data: arrayImageCountShow, // array of values (count for each goat when it was clicked)
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 206, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
@@ -268,17 +277,41 @@ var myChart = new Chart(goatCanvas, {
                         'rgba(255, 159, 64, 0.2)',
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(255, 99, 132, 0.2)',
-                ],
-                borderWidth: 1
-            }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
+                    ],
+                    borderWidth: 1
+                }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
-    }
-});}
+    });
+}
+checkAndRestore();
