@@ -42,7 +42,7 @@ function countGoats(event) {
         test.removeEventListener("click", countGoats)
 
         local();
-chart();
+        chart();
 
         console.log(localStorage);
     }
@@ -192,7 +192,7 @@ button.onclick = function () {
 
     }
 
-    
+
 }
 
 function local() {
