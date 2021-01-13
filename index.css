@@ -1,0 +1,88 @@
+*{
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color:;
+  
+  }
+  
+  header {
+    background: #18ad3155;
+    width: 100%;
+  }
+  
+
+  
+  main{
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  main > *{
+    float:left;
+  }
+  
+  main > :nth-child(odd){
+    width:25%
+  }
+  
+  main > :nth-child(2){
+    width: 50%;
+  }
+  
+  main ul, main li {
+    padding: 0;
+    margin: 10px 0;
+  }
+  
+  aside{ 
+    padding-left: 30px;
+  }
+  
+  img {
+    max-height: 300px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  li {
+    display: inline-block;
+    list-style: none;
+    margin: 20px 40px 20px 0px;
+    font-size: 1.2em;
+    
+  }
+  
+  #all_goats{
+
+width: 1000px;
+height: 500px;
+margin-bottom: 3px;
+  }
+div img{
+  margin-bottom: 3px;
+  width: 300px;
+  height: 500px;
+}
+  #all_goats div {
+
+    display: inline-block;
+  }
+  button{
+    margin-top: 0;
+
+width: 200px;
+height: 50px;
+
+  }
+
+  #url1{
+
+  }
+  #url1 li {
+display: block;
+list-style: square;
+
+  }
